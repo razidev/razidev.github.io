@@ -4,7 +4,7 @@ title: About
 ---
 
 ## [](#header-2)Hey fellows,
-Saya Razi Aziz Syahputro saya seorang software engineer. Saya saat ini fokus di bagian backend, saya menulis blog ini merupakan pengalaman saya dibidang yang saya geluti agar apa yang saya pelajari tidak mudah lupa karna ada pepatah bilang ikatlah ilmu dengan mencatat.
+Perkenalkan saya Razi Aziz Syahputro, saat ini saya bekerja sebagai software engineer, saya menulis blog ini merupakan pengalaman saya dibidang yang saya geluti agar apa yang saya pelajari tidak mudah lupa karna ada pepatah bilang ikatlah ilmu dengan mencatat.
 
 Saya lulusan Universitas Negeri Jakarta dan saya telah bekerja di perusahaan Telkomsigma dan saat ini bekerja di Unsircle. Selama saya kuliah, saya pernah mengajarkan siswa SMK mengenai perakitan komputer dan koding. Dan juga magang di artivisi intermedia dalam pembuatan website.
 
