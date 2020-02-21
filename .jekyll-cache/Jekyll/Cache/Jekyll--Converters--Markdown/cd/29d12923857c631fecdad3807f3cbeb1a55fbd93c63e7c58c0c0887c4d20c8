@@ -1,0 +1,28 @@
+I"M<p>Hai fellows, adakah kalian yang baru ingin mempelajari node.js dan caranya membuat API(application programming interface). Jika iya, kalian berada di blog yang tepat. Pada artikel ini saya akan membahas apa itu node.js dan framework express. Let’s get started…
+<img src="https://cdn.pixabay.com/photo/2015/04/23/17/41/node-js-736399_960_720.png" alt="" /></p>
+
+<p>Node.js adalah platform berbasis javascript yang lebih digunakan untuk server-side atau bisa dieksekusi diluar browser dan bisa juga client-side karena Javascript sendiri merupakan bahasa pemrograman client-side atau pada browser. Dengan bantuan runtime pada javascript, kini memungkinkan developer membuat aplikasi berbasis web, mobile, ataupun membuat API yang berjalan diatas server. Node.js memiliki module http tersendiri yang memungkinkan developer membuat aplikasi berjalan di server web tanpa bantuan aplikasi lain seperti xampp, mamp, atau lainnya.</p>
+
+<p>Yang membedakan node.js dengan bahasa pemrograman lain yaitu Nodej.s bersifat non-blocking/asynchronous yang merupakan mengeksekusi code tanpa harus menunggu code sebelumnya selesai terlebih dahulu. Karena non-blocking, sistem scalable sangat dianjurkan dikembangkan dengan Node.js. Berikut contoh code perbandingan dari blocking dan non-blocking.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Blocking Code</span>
+<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">before reading</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">reading file </span><span class="dl">'</span><span class="p">,</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">/README.md</span><span class="dl">'</span><span class="p">));</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">after reading</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// akan jalan setelah reading file</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Non-BLocking Code</span>
+<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">before reading</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="dl">'</span><span class="s1">/README.md</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">reading file</span><span class="dl">'</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">after reading</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// akan jalan sebelum membaca file</span>
+</code></pre></div></div>
+
+<p>Contoh pertama pada <code class="highlighter-rouge">blocking code</code> diatas, <code class="highlighter-rouge">console.log('reading file)</code> akan dipanggil terlebih dahulu sebelum <code class="highlighter-rouge">console.log('after reading')</code>. Sedangkan contoh kedua <code class="highlighter-rouge">non-blocking code</code>, fs.readFile() adalah non-blocking, jadi eksekusi bisa terus berlanjut dan <code class="highlighter-rouge">console.log('after reading')</code> akan dipanggil terlebih dahulu sebelum <code class="highlighter-rouge">console.log('reading file')</code>. Kelebihannya <code class="highlighter-rouge">console.log('after reading')</code> dipanggil terlebih dahulu tanpa harus menunggu file terbaca sampai selesai adalah kunci desain arsitektur untuk proses yang lebih cepat.</p>
+
+<p>Framework express merupakan web application framework paling populer untuk Node.js yang digunakan untuk membuat web application ataupun REST API. Framework ini menjadi dasar framework server pada Node.js. Pada kategori Node.js ini saya hanya akan membahas membuat REST API dengan format JSON dan diharapkan pembaca sudah paham dasar-dasar dari pemrograman. Dimateri selanjutnya saya akan membahas <a href="https://razidev.github.io/Node-Version-Manager">Node Version Manager</a></p>
+:ET

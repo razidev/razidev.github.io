@@ -8,4 +8,4 @@ Perkenalkan saya Razi Aziz Syahputro, saat ini saya bekerja sebagai software eng
 
 Saya lulusan Universitas Negeri Jakarta dan saya telah bekerja di perusahaan Telkomsigma dan saat ini bekerja di Unsircle. Selama saya kuliah, saya pernah mengajarkan siswa SMK mengenai perakitan komputer dan koding. Dan juga magang di artivisi intermedia dalam pembuatan website.
 
-Semua kodingan saya bebas akses di [Github](https://github.com/razidev) dan [Resume](https://razidev.github.io/resume/) saya tersedia jika ingin melihatnya. Hubungi saya di [razisyahputro@gmail.com](mailto:razisyahputro@gmail.com)
+Semua kodingan saya bebas akses di [Github](https://github.com/razidev) dan [Resume](https://razidev.github.io/resume/) saya tersedia jika ingin melihatnya. Bisa menghubungi saya di [razisyahputro@gmail.com](mailto:razisyahputro@gmail.com)

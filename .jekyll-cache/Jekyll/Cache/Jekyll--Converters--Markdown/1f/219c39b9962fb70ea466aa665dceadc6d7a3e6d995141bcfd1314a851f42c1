@@ -1,0 +1,22 @@
+I"ë<p>NVM merupakan kependekan dari Node Version Manager, dari namanya sudah jelas bahwa NVM bertugas sebagai memanage versi dari Node.JS kita, misalkan project yang teman anda kerjakan versi Node.Jsnya berbeda dengan versi Node.JS komputer kita dengan persyaratan Node.JS versi lama/baru tersebut mengharuskan komputer kita untuk menyesuaikan versinya agar tidak terjadi error. Maka dari pada anda uninstall/install Node.JS berulang kali, NVM membantu anda dalam hal ini dengan menginstall beberapa versi Node.JS dan menggunakan versi yang dibutuhkan.</p>
+
+<p>Pertama-tama jalankan command dibawah ini</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#linux</span>
+
+curl <span class="nt">-o-</span> https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+<span class="c">#atau</span>
+wget <span class="nt">-qO-</span> https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+							<span class="c">#sumber: https://github.com/nvm-sh/nvm</span>
+</code></pre></div></div>
+<p>copy 3 line terbawah hasil dari install command diatas, dan paste di terminal itu juga dan tekan enter.</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#example</span>
+<span class="nb">export </span><span class="nv">NVM_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.nvm"</span>
+<span class="o">[</span> <span class="nt">-s</span> <span class="s2">"</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="se">\.</span> <span class="s2">"</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh"</span>  <span class="c"># This loads nvm</span>
+<span class="o">[</span> <span class="nt">-s</span> <span class="s2">"</span><span class="nv">$NVM_DIR</span><span class="s2">/bash_completion"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="se">\.</span> <span class="s2">"</span><span class="nv">$NVM_DIR</span><span class="s2">/bash_completion"</span>  <span class="c"># This loads nvm bash_completion</span>
+</code></pre></div></div>
+<p>Tutup terminal anda dan buka kembali terminal baru. Cek <code class="highlighter-rouge">nvm --version</code> untuk mengecek versinya jika berhasil diinstall. Ketik <code class="highlighter-rouge">nvm ls</code> untuk melihat semua daftar versi Node.Js yang terinstall di komputer. Ketik <code class="highlighter-rouge">nvm  install ${version}</code> untuk menginstall versi Node.JS yang diinginkan. Dan <code class="highlighter-rouge">nvm use ${version}</code> untuk menggunakan versi Node.JS yang diinginkan</p>
+
+<p>Saya kira cukup penggunaan yang sering digunakan di NVM dan anda bisa cek command <code class="highlighter-rouge">nvm --help</code> untuk penggunaan lebih lanjut</p>
+
+<p>untuk pengguna windows installnya bisa baca <a href="https://github.com/coreybutler/nvm-windows">disini</a></p>
+:ET
