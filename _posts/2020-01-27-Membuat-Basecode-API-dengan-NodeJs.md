@@ -55,7 +55,7 @@ lalu kita ketik di terminal `npm install nodemon express` maka akan terbentuk fo
 }
 ```
 
-Mengapa menggunakan `nodemon` ? karna dengan nodemon jika ada perubahan dalam file, maka kita tidak harus merestart server kita. Cara menjalankan hanya dengan ketikan terminal `npm start`. Dan mengapa menginstall modul express ? karna dengan framework express kita dengan mudah terbantu dalam pengembangan API dan juga sudah banyak digunakan.
+Mengapa menggunakan `nodemon` ? karna dengan nodemon jika ada perubahan dalam file, maka kita tidak harus merestart server kita. Cara menjalankan hanya dengan ketikan terminal `npm start`. Dan mengapa menginstall `modul express` ? karna dengan framework express kita dengan mudah terbantu dalam pengembangan API dan juga sudah banyak digunakan.
 
 Lanjut lagi, dibagian file **index.js**, kita ketikan kodingan seperti ini: 
 

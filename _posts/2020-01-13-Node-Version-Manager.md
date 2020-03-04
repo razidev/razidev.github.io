@@ -26,3 +26,5 @@ Tutup terminal anda dan buka kembali terminal baru. Cek `nvm --version` untuk me
 Saya kira cukup penggunaan yang sering digunakan di NVM dan anda bisa cek command `nvm --help` untuk penggunaan lebih lanjut
 
 untuk pengguna windows installnya bisa baca [disini](https://github.com/coreybutler/nvm-windows)
+
+Dimateri selanjutnya saya akan membahas [Membuat Basecode API dengan Node.JS PART 1](https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs)
