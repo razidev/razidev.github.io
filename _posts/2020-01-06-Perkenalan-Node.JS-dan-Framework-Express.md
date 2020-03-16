@@ -3,7 +3,7 @@ title: Perkenalan Node.Js Dan Framework Express
 published: true
 categories: code,Node.JS,Express
 ---
-Hai fellows, adakah kalian yang baru ingin mempelajari node.js dan caranya membuat API(application programming interface). Jika iya, kalian berada di blog yang tepat. Pada artikel ini saya akan membahas apa itu node.js dan framework express. Let's get started...
+Hai fellas, adakah kalian yang baru ingin mempelajari node.js dan caranya membuat API(application programming interface). Jika iya, kalian berada di blog yang tepat. Pada artikel ini saya akan membahas apa itu node.js dan framework express. Let's get started...
 ![](https://cdn.pixabay.com/photo/2015/04/23/17/41/node-js-736399_960_720.png)
 
 Node.js adalah platform berbasis javascript yang lebih digunakan untuk server-side atau bisa dieksekusi diluar browser dan bisa juga client-side karena Javascript sendiri merupakan bahasa pemrograman client-side atau pada browser. Dengan bantuan runtime pada javascript, kini memungkinkan developer membuat aplikasi berbasis web, mobile, ataupun membuat API yang berjalan diatas server. Node.js memiliki module http tersendiri yang memungkinkan developer membuat aplikasi berjalan di server web tanpa bantuan aplikasi lain seperti xampp, mamp, atau lainnya.
