@@ -1,0 +1,77 @@
+I"i)<p>Hai sebelum masuk ke pembahasan, siapa yang pernah mengalami kesulitan mencari tutorial best practice dalam pembuatan aplikasi menggunakan bahasa pemrograman apapun? Pasti seorang software engineer pernah mengalami kesulitan mencari best practice mengkoding dalam bahasa pemrograman apapun entah dalam berapa lama sampai seorang tersebut merasa yakin bahwa yang dia koding sekarang merupakan best practice, mudah di reuse, mudah di debuging, dan lain-lain.</p>
+
+<p>Pada pembahasan kali ini saya ingin membahas <strong><em>membuat basecode API dengan Node.JS + framework Express</em></strong> yang menurut saya ini best practice untuk saya sendiri. Diharapkan pembaca sudah menginstall <a href="https://nodejs.org/en/">Node.Js</a>. Pertama-tama anda ketikkan di terminal <code class="highlighter-rouge">npm init -y</code> didalam folder yang anda buat misal: <strong>base-code-api</strong> lalu akan terbuat file <strong>package.json</strong> jika dibuka maka dalamnya seperti ini:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">base-code-api</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">version</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1.0.0</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">main</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">index.js</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">scripts</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">author</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">license</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ISC</span><span class="dl">"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>dibagian object <strong>main</strong> terlihat jelas bahwa default file yang terbuat adalah <strong>index.js</strong>, maka dari itu kita buat file <strong>index.js</strong> diroot utama project node.js kita atau tepat dalam folder <strong>base-code-api</strong></p>
+
+<p>lalu kita bisa edit dari <strong>package.json</strong> dibagian object <strong>scripts</strong> kita bisa nambah object start menjadi seperti ini:</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+	<span class="c1">//tetap-sama</span>
+	<span class="dl">"</span><span class="s2">scripts</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+		<span class="dl">"</span><span class="s2">start</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">nodemon index.js</span><span class="dl">"</span><span class="p">,</span>
+		<span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1</span><span class="dl">"</span>
+	<span class="p">}</span>
+	<span class="c1">//tetap-sama</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>lalu kita ketik di terminal <code class="highlighter-rouge">npm install nodemon express</code> maka akan terbentuk folder <strong>node_modules</strong> dan file <strong>package-lock.json</strong>, kita diamkan saja folder dan file tersebut karna keduanya merupakan digenerate secara otomatis oleh npm kita. Kira-kira perubahan dalam file <strong>package.json</strong> menjadi seperti ini:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">base-code-api</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">version</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1.0.0</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">main</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">index.js</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">scripts</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">start</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">nodemon index.js</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">keywords</span><span class="dl">"</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="dl">"</span><span class="s2">author</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">license</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ISC</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">dependencies</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">express</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">^4.17.1</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">nodemon</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">^2.0.2</span><span class="dl">"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Mengapa menggunakan <code class="highlighter-rouge">nodemon</code> ? karna dengan nodemon jika ada perubahan dalam file, maka kita tidak harus merestart server kita. Cara menjalankan hanya dengan ketikkan di terminal <code class="highlighter-rouge">npm start</code>. Dan mengapa menginstall modul <code class="highlighter-rouge">express</code> ? karna dengan framework express kita dengan mudah terbantu dalam pengembangan API dan juga sudah banyak digunakan.</p>
+
+<p>Lanjut lagi, dibagian file <strong>index.js</strong>, kita ketikkan kodingan seperti ini:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">),</span>
+  <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">(),</span>
+  <span class="nx">bodyParser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">body-parser</span><span class="dl">'</span><span class="p">),</span>
+  <span class="nx">PORT</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span><span class="na">extended</span><span class="p">:</span> <span class="kc">true</span><span class="p">}));</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span><span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">`Server has started on PORT: </span><span class="p">${</span><span class="nx">PORT</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">app</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>saya menggunakan modul <strong>body-parser</strong> untuk menghandle http request yang diterima dengan mengexposenya menggunakan <code class="highlighter-rouge">req.body</code>.</p>
+
+<p>Jika kita jalankan dengan <code class="highlighter-rouge">npm start</code> kira-kira di terminal akan muncul seperti ini:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Server has started on PORT: 3000
+</code></pre></div></div>
+
+<p>kira-kira seperti itu bagian pertama kerangka dari pembuatan API, bagian kedua bisa anda lihat <a href="https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs-PT2">disini</a>.</p>
+:ET

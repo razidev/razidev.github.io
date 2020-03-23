@@ -1,0 +1,107 @@
+I"@/<p>Hai dipembahasan sebelumnya saya telah membahas membuat <a href="https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs">basecode API bagian 1</a>, pada bagian ini saya akan melanjutkan pembahasan sebelumnya dengan menggunakan database Mongo, disini saya akan membuat(create) API register.</p>
+
+<p>Pertama-tama kita masuk ke dalam folder base-code-api lalu didalamnya kita buat folder <strong>APIs</strong>(*penamaan bebas) lalu kita buat file <strong>route.js</strong> dan <strong>register.js</strong> didalam folder APIs. Kira-kira kerangka-nya menjadi seperti ini:</p>
+
+<p>base-code-api</p>
+<ul>
+  <li>APIs
+    <ul>
+      <li>route.js</li>
+      <li>register.js</li>
+    </ul>
+  </li>
+  <li>node-modules</li>
+  <li>index.js</li>
+  <li>package.json</li>
+  <li>package-lock.json</li>
+</ul>
+
+<p>Di dalam file index.js, kita tambahkan kodingannya menjadi seperti ini:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">),</span>
+  <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">(),</span>
+  <span class="nx">bodyParser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">body-parser</span><span class="dl">'</span><span class="p">),</span>
+  <span class="nx">PORT</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">bodyParser</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span><span class="na">extended</span><span class="p">:</span> <span class="kc">true</span><span class="p">}));</span>
+
+<span class="kd">const</span> <span class="nx">APIS</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./APIs/route</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">,</span> <span class="nx">APIS</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">error</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Not Found</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">error</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="mi">404</span><span class="p">;</span>
+    <span class="nx">next</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span> <span class="p">()</span><span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">`Server has started on PORT: </span><span class="p">${</span><span class="nx">PORT</span><span class="p">}</span><span class="s2">`</span><span class="p">))</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">app</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>dan didalam file <strong>route.js</strong> kita ketik kodingan menjadi seperti ini:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">),</span>
+    <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span>
+
+
+<span class="kd">let</span> <span class="nx">register</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./register</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/register</span><span class="dl">"</span><span class="p">,</span> <span class="nx">register</span><span class="p">.</span><span class="nx">Register</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">router</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>dan didalam file <strong>register.js</strong> kita ketik kodingannya menjadi seperti ini:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">MongoClient</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">mongodb</span><span class="dl">'</span><span class="p">).</span><span class="nx">MongoClient</span><span class="p">;</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">Register</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
+    <span class="nx">MongoClient</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="dl">'</span><span class="s1">mongodb://localhost:27017/belajar</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">db</span><span class="p">)</span> <span class="o">=&gt;</span><span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+        <span class="nx">db</span><span class="p">.</span><span class="nx">db</span><span class="p">().</span><span class="nx">collection</span><span class="p">(</span><span class="dl">'</span><span class="s1">users</span><span class="dl">'</span><span class="p">).</span><span class="nx">insertOne</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="na">full_name</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">full_name</span><span class="p">,</span>
+                <span class="na">email</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">email</span><span class="p">,</span>
+                <span class="na">password</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">password</span><span class="p">,</span>
+                <span class="na">telephone</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">telephone</span>
+            <span class="p">}</span>
+        <span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">succed</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="c1">// console.log('user berhasil dibuat', succed)</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+                <span class="na">status</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ok</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">user berhasil dibuat</span><span class="dl">'</span>
+            <span class="p">});</span>
+
+        <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="c1">// console.log('erUpdate', err)</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+                <span class="na">status</span><span class="p">:</span> <span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">message</span><span class="p">:</span> <span class="s2">`user gagal dibuat </span><span class="p">${</span><span class="nx">err</span><span class="p">}</span><span class="s2">`</span>
+            <span class="p">});</span>
+        <span class="p">})</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>pertama-tama kita <code class="highlighter-rouge">npm install mongodb</code> terlebih dahulu. Kita tidak harus membuat database dan collectionsnya terlebih dahulu, karna kodingan diatas sudah secara otomatis terbuat database dan collectionsnya.</p>
+
+<p>Pastikan dilaptop anda sudah menginstall <a href="https://www.mongodb.com/download-center/community">mongodb</a> ya. Lalu kita jalankan dengan <code class="highlighter-rouge">npm start</code> dan buka postman.</p>
+
+<p><img src="https://www.dropbox.com/s/pk5a860xclfnzh4/register-result.png?dl=0" alt="register result" /></p>
+
+<p>Method:     POST</p>
+
+<p>Body:   {“email”: “razidev@mail.com” “full_name”: “Razidev Blog”,”password”: “pasword123” “telephone”: “08912345678”}</p>
+
+<p>Result: {“status”: “ok”, “message”: “user berhasil dibuat”}</p>
+
+<p>jika lihat di mongodb hasilnya seperti ini:</p>
+
+<p><img src="https://www.dropbox.com/s/kbos0ttwl83we9p/mongodb-result.png?dl=0" alt="database result" /></p>
+
+<p>Kodingan diatas bisa di improve lagi, misalkan password kita bisa encryp lagi menggunakan modul <code class="highlighter-rouge">bcrypt</code>, lalu anda bisa menggunakan <code class="highlighter-rouge">validator</code> tiap object agar tidak ada pengecekan satu persatu, dan menggunakan modul <code class="highlighter-rouge">mongose</code>. Anda bisa searching lebih lanjut di <a href="npmjs.com">npmjs</a>.</p>
+
+<p>Untuk pembahasan membuat user sampai disini saja, selanjutnya saya akan membuat API melihat user.</p>
+:ET

@@ -1,4 +1,4 @@
-I"ë<p>NVM merupakan kependekan dari Node Version Manager, dari namanya sudah jelas bahwa NVM bertugas sebagai memanage versi dari Node.JS kita, misalkan project yang teman anda kerjakan versi Node.Jsnya berbeda dengan versi Node.JS komputer kita dengan persyaratan Node.JS versi lama/baru tersebut mengharuskan komputer kita untuk menyesuaikan versinya agar tidak terjadi error. Maka dari pada anda uninstall/install Node.JS berulang kali, NVM membantu anda dalam hal ini dengan menginstall beberapa versi Node.JS dan menggunakan versi yang dibutuhkan.</p>
+I"‘<p>NVM merupakan kependekan dari Node Version Manager, dari namanya sudah jelas bahwa NVM bertugas sebagai memanage versi dari Node.JS kita, misalkan project yang teman anda kerjakan versi Node.Jsnya berbeda dengan versi Node.JS komputer kita dengan persyaratan Node.JS versi lama/baru tersebut mengharuskan komputer kita untuk menyesuaikan versinya agar tidak terjadi error. Maka dari pada anda uninstall/install Node.JS berulang kali, NVM membantu anda dalam hal ini dengan menginstall beberapa versi Node.JS dan menggunakan versi yang dibutuhkan.</p>
 
 <p>Pertama-tama jalankan command dibawah ini</p>
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#linux</span>
@@ -19,4 +19,6 @@ wget <span class="nt">-qO-</span> https://raw.githubusercontent.com/nvm-sh/nvm/v
 <p>Saya kira cukup penggunaan yang sering digunakan di NVM dan anda bisa cek command <code class="highlighter-rouge">nvm --help</code> untuk penggunaan lebih lanjut</p>
 
 <p>untuk pengguna windows installnya bisa baca <a href="https://github.com/coreybutler/nvm-windows">disini</a></p>
+
+<p>Dimateri selanjutnya saya akan membahas <a href="https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs">Membuat Basecode API dengan Node.JS PART 1</a></p>
 :ET
