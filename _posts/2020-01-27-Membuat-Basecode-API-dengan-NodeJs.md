@@ -47,9 +47,11 @@ lalu kita ketik di terminal `npm install nodemon express` maka akan terbentuk fo
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
     "nodemon": "^2.0.2"
   }
 }
@@ -73,10 +75,12 @@ app.listen(PORT, ()=> console.info(`Server has started on PORT: ${PORT}`))
 module.exports = app;
 ```
 
+saya menggunakan modul **body-parser** untuk menghandle http request yang diterima dengan mengexposenya menggunakan `req.body`.
+
 Jika kita jalankan dengan `npm start` kira-kira di terminal akan muncul seperti ini:
 
 ```sh
 Server has started on PORT: 3000
 ```
 
-kira-kira seperti itu bagian pertama kerangka dari pembuatan API, bagian kedua akan dibahas dalam waktu yang akan datang.
+kira-kira seperti itu bagian pertama kerangka dari pembuatan API, bagian kedua bisa anda lihat [disini](https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs-PT2).
