@@ -1,4 +1,4 @@
-I"É.<p>Hai dipembahasan sebelumnya saya telah membahas membuat <a href="https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs">basecode API bagian 1</a>, pada bagian ini saya akan melanjutkan pembahasan sebelumnya dengan menggunakan database Mongo, disini saya akan membuat(create) API register.</p>
+I"`0<p>Hai dipembahasan sebelumnya saya telah membahas membuat <a href="https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs">basecode API bagian 1</a>, pada bagian ini saya akan melanjutkan pembahasan sebelumnya dengan menggunakan database Mongo, disini saya akan membuat(create) API register.</p>
 
 <p>Pertama-tama kita masuk ke dalam folder base-code-api lalu didalamnya kita buat folder <strong>APIs</strong>(*penamaan bebas) lalu kita buat file <strong>route.js</strong> dan <strong>register.js</strong> didalam folder APIs. Kira-kira kerangka-nya menjadi seperti ini:</p>
 
@@ -89,7 +89,7 @@
 
 <p>Pastikan dilaptop anda sudah menginstall <a href="https://www.mongodb.com/download-center/community">mongodb</a> ya. Lalu kita jalankan dengan <code class="highlighter-rouge">npm start</code> dan buka postman.</p>
 
-<!-- ![register result](images/register-result.png) -->
+<p><img src="" alt="register result" /></p>
 
 <p>Method:     POST</p>
 
@@ -99,7 +99,7 @@
 
 <p>jika lihat di mongodb hasilnya seperti ini:</p>
 
-<p><img src="" alt="register result" /></p>
+<p><img src="https://previews.dropbox.com/p/thumb/AAt-JbETXds3SMtTo5E77LjCCMlaAJVzoZQ_3T3Xf19TvcLUrptxEQc-5jAD2qaJf5ZqnNvnUnXY99WPZ4SBqqGJdEa3yr2WXx8es-j_DQd0E6MDAtfUIhApJwi8J8UjYYdsw-rn8nKifmb9NBnPklJnO-Gq5bxRyim8zbn22OR4WBmZQHPSMGlV9XTpeqtf2CWe6G4BYTs5byxo9jcvS_q9hlJsol0wuE_jN41uOwjqkJ6zeqnuhJJRc0yWz8J5SJAIhGeL4AdY8y9ah8Tm2xTIbKAwpIVWqSR7K7_FGLAYuP9qqVQ3v1t3VtUYGWgrfNpIQBNzz3MM3uFgk92lgV1b/p.png?fv_content=true&amp;size_mode=5" alt="database result" /></p>
 
 <p>Kodingan diatas bisa di improve lagi, misalkan password kita bisa encryp lagi menggunakan modul <code class="highlighter-rouge">bcrypt</code>, lalu anda bisa menggunakan <code class="highlighter-rouge">validator</code> tiap object agar tidak ada pengecekan satu persatu, dan menggunakan modul <code class="highlighter-rouge">mongose</code>. Anda bisa searching lebih lanjut di <a href="npmjs.com">npmjs</a>.</p>
 

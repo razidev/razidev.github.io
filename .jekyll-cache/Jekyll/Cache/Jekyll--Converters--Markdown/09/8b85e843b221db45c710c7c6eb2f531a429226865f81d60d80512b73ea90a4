@@ -1,4 +1,4 @@
-I"2<p>Hai dipembahasan sebelumnya saya telah membahas membuat <a href="https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs">basecode API bagian 1</a>, pada bagian ini saya akan melanjutkan pembahasan sebelumnya dengan menggunakan database Mongo, disini saya akan membuat(create) API register.</p>
+I"r0<p>Hai dipembahasan sebelumnya saya telah membahas membuat <a href="https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs">basecode API bagian 1</a>, pada bagian ini saya akan melanjutkan pembahasan sebelumnya dengan menggunakan database Mongo, disini saya akan membuat(create) API register.</p>
 
 <p>Pertama-tama kita masuk ke dalam folder base-code-api lalu didalamnya kita buat folder <strong>APIs</strong>(*penamaan bebas) lalu kita buat file <strong>route.js</strong> dan <strong>register.js</strong> didalam folder APIs. Kira-kira kerangka-nya menjadi seperti ini:</p>
 
@@ -89,7 +89,7 @@
 
 <p>Pastikan dilaptop anda sudah menginstall <a href="https://www.mongodb.com/download-center/community">mongodb</a> ya. Lalu kita jalankan dengan <code class="highlighter-rouge">npm start</code> dan buka postman.</p>
 
-<p><img src="https://previews.dropbox.com/p/thumb/AAtKd9KuFiluKewBzB4ZubdCOZc267Z77JgG1MMEUW8ysdGhs0N8tRzbzAkBxPmXL5vFkB2npX9itlEQNDl5s6mJpBmiQh7BdKM_uI4I3J0OOrkjI0_LeKOUZ50FREE9leJxXhg2NwIFtQEzbmn31TJjjX9t8ym-eSN0qjRcf8zbyO-4RoCm_hrli-SEmmmY6I-VhzE7Y-1OwwOXzaFqgNE-jOHQlRm4YZUDFEt9dQ-Ij3S9yD9JHyqv8kdYlXnK9b9fnR-vdbmNlMO1Sn4zbLpOAq-0AyvsMpEJ59Uog36pcWOK-8wtEWAes30s3JsRAIKf_2E6mLpp_Yjux9uoNYgX/p.png?fv_content=true&amp;size_mode=5" alt="register result" /></p>
+<p><img src="mongodb-result.png" alt="register result" /></p>
 
 <p>Method:     POST</p>
 

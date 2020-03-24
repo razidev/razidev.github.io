@@ -92,7 +92,7 @@ pertama-tama kita `npm install mongodb` terlebih dahulu. Kita tidak harus membua
 
 Pastikan dilaptop anda sudah menginstall [mongodb](https://www.mongodb.com/download-center/community) ya. Lalu kita jalankan dengan `npm start` dan buka postman.
 
-![register result](https://previews.dropbox.com/p/thumb/AAtKd9KuFiluKewBzB4ZubdCOZc267Z77JgG1MMEUW8ysdGhs0N8tRzbzAkBxPmXL5vFkB2npX9itlEQNDl5s6mJpBmiQh7BdKM_uI4I3J0OOrkjI0_LeKOUZ50FREE9leJxXhg2NwIFtQEzbmn31TJjjX9t8ym-eSN0qjRcf8zbyO-4RoCm_hrli-SEmmmY6I-VhzE7Y-1OwwOXzaFqgNE-jOHQlRm4YZUDFEt9dQ-Ij3S9yD9JHyqv8kdYlXnK9b9fnR-vdbmNlMO1Sn4zbLpOAq-0AyvsMpEJ59Uog36pcWOK-8wtEWAes30s3JsRAIKf_2E6mLpp_Yjux9uoNYgX/p.png?fv_content=true&size_mode=5)
+![register result](https://i.ibb.co/18Hj7cc/register-result.png)
 
 Method:     POST
 
@@ -102,7 +102,7 @@ Result: {"status": "ok", "message": "user berhasil dibuat"}
 
 jika lihat di mongodb hasilnya seperti ini:
 
-![database result](https://previews.dropbox.com/p/thumb/AAt-JbETXds3SMtTo5E77LjCCMlaAJVzoZQ_3T3Xf19TvcLUrptxEQc-5jAD2qaJf5ZqnNvnUnXY99WPZ4SBqqGJdEa3yr2WXx8es-j_DQd0E6MDAtfUIhApJwi8J8UjYYdsw-rn8nKifmb9NBnPklJnO-Gq5bxRyim8zbn22OR4WBmZQHPSMGlV9XTpeqtf2CWe6G4BYTs5byxo9jcvS_q9hlJsol0wuE_jN41uOwjqkJ6zeqnuhJJRc0yWz8J5SJAIhGeL4AdY8y9ah8Tm2xTIbKAwpIVWqSR7K7_FGLAYuP9qqVQ3v1t3VtUYGWgrfNpIQBNzz3MM3uFgk92lgV1b/p.png?fv_content=true&size_mode=5)
+![database result](https://i.ibb.co/2grGgSh/mongodb-result.png)
 
 Kodingan diatas bisa di improve lagi, misalkan password kita bisa encryp lagi menggunakan modul `bcrypt`, lalu anda bisa menggunakan `validator` tiap object agar tidak ada pengecekan satu persatu, dan menggunakan modul `mongose`. Anda bisa searching lebih lanjut di [npmjs](npmjs.com).
 
