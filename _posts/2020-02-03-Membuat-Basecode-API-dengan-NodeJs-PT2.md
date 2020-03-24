@@ -104,6 +104,6 @@ jika lihat di mongodb hasilnya seperti ini:
 
 ![database result](https://i.ibb.co/2grGgSh/mongodb-result.png)
 
-Kodingan diatas bisa di improve lagi, misalkan password kita bisa encryp lagi menggunakan modul `bcrypt`, lalu anda bisa menggunakan `validator` tiap object agar tidak ada pengecekan satu persatu, dan menggunakan modul `mongose`. Anda bisa searching lebih lanjut di [npmjs](npmjs.com).
+Kodingan diatas bisa di improve lagi, misalkan password kita bisa encryp lagi menggunakan modul `bcrypt`, lalu anda bisa menggunakan `validator` tiap object agar tidak ada pengecekan satu persatu, dan menggunakan modul `mongose`. Anda bisa searching lebih lanjut di [npmjs](http://npmjs.com/).
 
 Untuk pembahasan membuat user sampai disini saja, selanjutnya saya akan membuat API melihat user.
