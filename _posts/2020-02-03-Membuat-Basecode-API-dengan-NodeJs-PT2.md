@@ -105,4 +105,4 @@ jika lihat di mongodb hasilnya seperti ini:
 
 Kodingan diatas bisa di improve lagi, misalkan password kita bisa encryp lagi menggunakan modul `bcrypt`, lalu anda bisa menggunakan `validator` tiap object agar tidak ada pengecekan satu persatu, dan menggunakan modul `mongose`. Anda bisa searching lebih lanjut di [npmjs](http://npmjs.com/).
 
-Untuk pembahasan membuat user sampai disini saja, selanjutnya saya akan membuat API melihat user.
+Untuk pembahasan membuat user sampai disini saja, selanjutnya saya akan membuat [API melihat user](https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs-PT3).
