@@ -61,7 +61,6 @@ dan didalam file **register.js** kita ketik kodingannya menjadi seperti ini:
 const MongoClient = require('mongodb').MongoClient;
 
 exports.Register = (req, res, next) => {
-    console.log(req.body)
     MongoClient.connect('mongodb://localhost:27017/belajar', (err, db) =>{
         if (err) throw err;
         db.db().collection('users').insertOne(
