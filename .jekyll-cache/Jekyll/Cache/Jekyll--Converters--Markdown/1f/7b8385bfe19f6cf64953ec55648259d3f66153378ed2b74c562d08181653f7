@@ -1,4 +1,4 @@
-I"F.<p>Hai dipembahasan sebelumnya saya telah membahas membuat <a href="https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs">basecode API bagian 1</a>, pada bagian ini saya akan melanjutkan pembahasan sebelumnya dengan menggunakan database Mongo, disini saya akan membuat(create) API register.</p>
+I"•.<p>Hai dipembahasan sebelumnya saya telah membahas membuat <a href="https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs">basecode API bagian 1</a>, pada bagian ini saya akan melanjutkan pembahasan sebelumnya dengan menggunakan database Mongo, disini saya akan membuat(create) API register.</p>
 
 <p>Pertama-tama kita masuk ke dalam folder base-code-api lalu didalamnya kita buat folder <strong>APIs</strong>(*penamaan bebas) lalu kita buat file <strong>route.js</strong> dan <strong>register.js</strong> didalam folder APIs. Kira-kira kerangka-nya menjadi seperti ini:</p>
 
@@ -102,5 +102,5 @@
 
 <p>Kodingan diatas bisa di improve lagi, misalkan password kita bisa encryp lagi menggunakan modul <code class="highlighter-rouge">bcrypt</code>, lalu anda bisa menggunakan <code class="highlighter-rouge">validator</code> tiap object agar tidak ada pengecekan satu persatu, dan menggunakan modul <code class="highlighter-rouge">mongose</code>. Anda bisa searching lebih lanjut di <a href="http://npmjs.com/">npmjs</a>.</p>
 
-<p>Untuk pembahasan membuat user sampai disini saja, selanjutnya saya akan membuat API melihat user.</p>
+<p>Untuk pembahasan membuat user sampai disini saja, selanjutnya saya akan membuat <a href="https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs-PT3">API melihat user</a>.</p>
 :ET
