@@ -3,15 +3,15 @@ title: Membuat Basecode API dengan Node.JS PART 3
 published: true
 categories: code,Node.JS,Express,MongoDB
 ---
-Hai dipembahasan sebelumnya saya telah membahas membuat [basecode API bagian 2](https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs-PT2), pada pembahasan ini saya akan membuat API read(view user) dari user yang telah di register.
+Hai dipembahasan sebelumnya saya telah membahas membuat [basecode API bagian 2](https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs-PT2) yang menjelaskan tentang pembuatan API create-user , pada pembahasan ini saya akan membuat API read(view user) dari user yang telah di register.
 
 Sama seperti pembuatan API sebelumnya, kita harus membuat file **list-user.js** di folder **APIs**. Dan kerangka projectnya akan menjadi seperti ini: 
 
 base-code-api
 - APIs
     - list-user.js
-    - route.js
     - register.js
+    - route.js
 - node-modules
 - index.js
 - package.json
@@ -57,4 +57,4 @@ lalu kita jalankan diterminal `npm start`, buka postman:
 
 ![list-user result](https://i.ibb.co/GttN020/capture-1.png)
 
-ya seperti itu hasilnya kodingan view-user tidak begitu banyak logic. Kodingan diatas bisa kita parsing lagi agar tidak semua data ditampilkan. Dalam pembahasan selanjutnya saya akan membahas API update data user.
+ya seperti itu hasilnya kodingan view-user tidak begitu banyak logic. Kodingan diatas bisa kita parsing lagi agar tidak semua data ditampilkan. Dalam pembahasan selanjutnya saya akan membahas [API update data user](https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs-PT4).

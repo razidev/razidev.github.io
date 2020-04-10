@@ -1,0 +1,72 @@
+I"Æ!<p>Hai dipembahasan sebelumnya saya telah membahas membuat <a href="https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs-PT3">basecode API bagian 3</a>, pada pembahasan ini saya akan membuat API <strong>update user</strong> yang telah dibuat.</p>
+
+<p>Sama seperti pembuatan API sebelumnya, kita harus membuat file <strong>update-user.js</strong> di folder <strong>APIs</strong>. Dan kerangka projectnya akan menjadi seperti ini:</p>
+
+<p>base-code-api</p>
+<ul>
+  <li>APIs
+    <ul>
+      <li>list-user.js</li>
+      <li>register.js</li>
+      <li>route.js</li>
+      <li>update-user.js</li>
+    </ul>
+  </li>
+  <li>node-modules</li>
+  <li>index.js</li>
+  <li>package.json</li>
+  <li>package-lock.json</li>
+</ul>
+
+<p>didalam file <strong>route.js</strong>, kita tambahkan menjadi seperti ini:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">),</span>
+    <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span>
+
+
+<span class="kd">let</span> <span class="nx">register</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./register</span><span class="dl">'</span><span class="p">),</span>
+    <span class="nx">updateUser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./update-user</span><span class="dl">'</span><span class="p">),</span>
+    <span class="nx">list</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./list-user</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/register</span><span class="dl">"</span><span class="p">,</span> <span class="nx">register</span><span class="p">.</span><span class="nx">Register</span><span class="p">);</span>
+<span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/list-user</span><span class="dl">"</span><span class="p">,</span> <span class="nx">list</span><span class="p">.</span><span class="nx">List</span><span class="p">);</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/update-user</span><span class="dl">"</span><span class="p">,</span> <span class="nx">updateUser</span><span class="p">.</span><span class="nx">UpdateUser</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">router</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>dan didalam file <strong>update-user</strong>, kita ketikkan kodingan seperti ini:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">MongoClient</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">mongodb</span><span class="dl">'</span><span class="p">).</span><span class="nx">MongoClient</span><span class="p">,</span>
+    <span class="nx">ObjectId</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">mongodb</span><span class="dl">'</span><span class="p">).</span><span class="nx">ObjectID</span><span class="p">,</span>
+    <span class="nx">bcrypt</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">bcrypt</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">UpdateUser</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">MongoClient</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="dl">'</span><span class="s1">mongodb://localhost:27017/belajar</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">db</span><span class="p">)</span> <span class="o">=&gt;</span><span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+        <span class="nx">db</span><span class="p">.</span><span class="nx">db</span><span class="p">().</span><span class="nx">collection</span><span class="p">(</span><span class="dl">'</span><span class="s1">users</span><span class="dl">'</span><span class="p">).</span><span class="nx">updateOne</span><span class="p">({</span><span class="na">_id</span><span class="p">:</span> <span class="nx">ObjectId</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">_id</span><span class="p">)},</span> <span class="p">{</span><span class="na">$set</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">full_name</span><span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">full_name</span><span class="p">,</span>
+            <span class="na">password</span><span class="p">:</span> <span class="nx">bcrypt</span><span class="p">.</span><span class="nx">hashSync</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">password</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+        <span class="p">}}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">updated</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+                <span class="na">status</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ok</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sukses update user</span><span class="dl">'</span>
+            <span class="p">});</span>
+        <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+                <span class="na">status</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ok</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">message</span><span class="p">:</span> <span class="s2">`Gagal update </span><span class="p">${</span><span class="nx">err</span><span class="p">}</span><span class="s2">`</span>
+            <span class="p">});</span>
+        <span class="p">})</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Diatas kodingan tersebut saya memakai module bcrypt untuk mengenkripsi password yang diinput agar kerahasiaan user lebih terjaga. Untuk user yang ingin saya edit adalah user dengan full name <em>Quality Asurance</em></p>
+
+<p><img src="https://i.ibb.co/wwbzyDp/Capture.png" alt="list-user" /></p>
+
+<p>lalu kita jalankan diterminal <code class="highlighter-rouge">npm start</code>, buka postman:</p>
+
+<p><img src="" alt="update-user result" /></p>
+:ET
