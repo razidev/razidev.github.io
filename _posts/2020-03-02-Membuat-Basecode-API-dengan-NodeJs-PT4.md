@@ -76,4 +76,4 @@ dan kita cek API **list-user**:
 
 ![list-user](https://i.ibb.co/tJG7LMc/Capture.png)
 
-Seperti itu kodingan dari **update-user** dengan logic yang simple. Dalam situasi tertentu untuk **update-user** banyak yang harus divalidasi datanya agar tidak ada kesalahan yang disengaja maupun tidak sengaja karna menyangkut data user yang sensitif. Dan dalam pembahasan selanjutnya saya akan membahas delete user.
+Seperti itu kodingan dari **update-user** dengan logic yang simple. Dalam situasi tertentu untuk **update-user** banyak yang harus divalidasi datanya agar tidak ada kesalahan yang disengaja maupun tidak sengaja karna menyangkut data user yang sensitif. Dan dalam pembahasan selanjutnya saya akan membahas [delete user](https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs-PT5).

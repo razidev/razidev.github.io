@@ -1,0 +1,85 @@
+I"'(<p>Hai dipembahasan sebelumnya saya telah membahas membuat <a href="https://razidev.github.io/Membuat-Basecode-API-dengan-NodeJs-PT4">basecode API bagian 4</a> yang menjelaskan tentang pembuatan API <strong>update-user</strong>, pada pembahasan ini saya akan membuat API <strong>delete user</strong> yang telah saya buat user-nya dibagian sebelumnya.</p>
+
+<p>Sama seperti pembuatan API sebelumnya, kita harus membuat file <strong>delete-user.js</strong> di folder <strong>APIs</strong>. Dan kerangka projectnya akan menjadi seperti ini:</p>
+
+<p>base-code-api</p>
+<ul>
+  <li>APIs
+    <ul>
+      <li>delete-user.js</li>
+      <li>list-user.js</li>
+      <li>register.js</li>
+      <li>route.js</li>
+      <li>update-user.js</li>
+    </ul>
+  </li>
+  <li>node-modules</li>
+  <li>index.js</li>
+  <li>package.json</li>
+  <li>package-lock.json</li>
+</ul>
+
+<p>didalam file <strong>route.js</strong>, kita tambahkan menjadi seperti ini:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">),</span>
+    <span class="nx">router</span> <span class="o">=</span> <span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span>
+
+
+<span class="kd">let</span> <span class="nx">register</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./register</span><span class="dl">'</span><span class="p">),</span>
+    <span class="nx">updateUser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./update-user</span><span class="dl">'</span><span class="p">),</span>
+    <span class="nx">list</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./list-user</span><span class="dl">'</span><span class="p">),</span>
+    <span class="nx">deleteUser</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./delete-user</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/register</span><span class="dl">"</span><span class="p">,</span> <span class="nx">register</span><span class="p">.</span><span class="nx">Register</span><span class="p">);</span>
+<span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/list-user</span><span class="dl">"</span><span class="p">,</span> <span class="nx">list</span><span class="p">.</span><span class="nx">List</span><span class="p">);</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/update-user</span><span class="dl">"</span><span class="p">,</span> <span class="nx">updateUser</span><span class="p">.</span><span class="nx">UpdateUser</span><span class="p">);</span>
+<span class="nx">router</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="dl">"</span><span class="s2">/delete-user/:user_id</span><span class="dl">"</span><span class="p">,</span> <span class="nx">deleteUser</span><span class="p">.</span><span class="nx">DeleteUser</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">router</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>dan didalam file <strong>delete-user</strong>, kita ketikkan kodingan seperti ini:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">MongoClient</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">mongodb</span><span class="dl">'</span><span class="p">).</span><span class="nx">MongoClient</span><span class="p">,</span>
+    <span class="nx">ObjectId</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">mongodb</span><span class="dl">'</span><span class="p">).</span><span class="nx">ObjectID</span><span class="p">;</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">DeleteUser</span> <span class="o">=</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">MongoClient</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="dl">'</span><span class="s1">mongodb://localhost:27017/belajar</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">db</span><span class="p">)</span> <span class="o">=&gt;</span><span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+        <span class="nx">db</span><span class="p">.</span><span class="nx">db</span><span class="p">().</span><span class="nx">collection</span><span class="p">(</span><span class="dl">'</span><span class="s1">users</span><span class="dl">'</span><span class="p">).</span><span class="nx">deleteOne</span><span class="p">({</span><span class="na">_id</span><span class="p">:</span> <span class="nx">ObjectId</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">user_id</span><span class="p">)})</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">deleted</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">deleted</span><span class="p">.</span><span class="nx">deletedCount</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+                    <span class="na">status</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ok</span><span class="dl">'</span><span class="p">,</span>
+                    <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sukses delete user</span><span class="dl">'</span>
+                <span class="p">});</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+                    <span class="na">status</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ok</span><span class="dl">'</span><span class="p">,</span>
+                    <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">user tidak ditemukan</span><span class="dl">'</span>
+                <span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">500</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+                <span class="na">status</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ok</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">message</span><span class="p">:</span> <span class="s2">`gagal delete user </span><span class="p">${</span><span class="nx">err</span><span class="p">}</span><span class="s2">`</span>
+            <span class="p">});</span>
+        <span class="p">})</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Dalam kodingan pada file <strong>delete-user</strong> tidak ada module tambahan. Hanya berbeda dari querynya saja dengan menggunakan <strong>deleteOne</strong> dan saya menggunakan kondisi balikan dari <strong><em>deleted.deletedCount</em></strong>, jika dari console maka balikan dari <strong><em>deleted.deletedCount</em></strong> adalah 1(true) jika user terdelete atau 0(false) jika user tidak ada yang terdelete. Pertama-pertama user yang ingin saya delete adalah user dengan full name <em>Razidev Blog</em> dengan id <em>5e81fe41511b3b18c8933e64</em>.</p>
+
+<p><img src="https://i.ibb.co/TrZsGpj/delete-user1.png" alt="list-user" /></p>
+
+<p>lalu kita jalankan diterminal <code class="highlighter-rouge">npm start</code>, buka postman dan hit api <strong>delete-user</strong>:</p>
+
+<p><img src="https://i.ibb.co/r4FPt3B/api-delete.png" alt="delete-user result" /></p>
+
+<p>dan kita cek API <strong>list-user</strong> dan <strong>database</strong>:</p>
+
+<p><img src="https://i.ibb.co/tYGvvn6/after-delete.png" alt="api dan database" /></p>
+
+<p>Dari hasil diatas kita bisa lihat bahwa di API <strong>list-user</strong> dan <strong>database</strong> usernya berkurang 1 dengan full name <em>Razi BLog</em>. Untuk materi membuat basecode API dengan NodeJS sampai disini, yang saya rasa cukup untuk pembahasan mengenai <strong>CRUD</strong>.</p>
+:ET
