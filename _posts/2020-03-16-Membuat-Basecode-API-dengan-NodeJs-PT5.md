@@ -71,7 +71,7 @@ exports.DeleteUser = (req, res, next) => {
 }
 ```
 
-Dalam kodingan pada file **delete-user** tidak ada module tambahan. Hanya berbeda dari querynya saja dengan menggunakan **deleteOne** dan saya menggunakan kondisi balikan dari **_deleted.deletedCount_**, jika dari console maka balikan dari **_deleted.deletedCount_** adalah 1(true) jika user terdelete atau 0(false) jika user tidak ada yang terdelete. Pertama-pertama user yang ingin saya delete adalah user dengan full name _Razidev Blog_ dengan id _5e81fe41511b3b18c8933e64_.
+Dalam kodingan pada file **delete-user** tidak ada module tambahan. Hanya berbeda dari querynya saja dengan menggunakan **deleteOne**, dan pemanggilan _user id_ tersebut saya menggunakan re.params, karna dalam **route.js** saya menangkap _user id_ dengan mengunakan parameter url dan saya menggunakan kondisi balikan dari **_deleted.deletedCount_**, jika dari console maka balikan dari **_deleted.deletedCount_** adalah 1(true) jika user terdelete atau 0(false) jika user tidak ada yang terdelete. Pertama-pertama user yang ingin saya delete adalah user dengan full name _Razidev Blog_ dengan id _5e81fe41511b3b18c8933e64_.
 
 ![list-user](https://i.ibb.co/TrZsGpj/delete-user1.png)
 
